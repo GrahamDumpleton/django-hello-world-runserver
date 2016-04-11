@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 SERVER_ARGS=""
 
 PORT=${OPENSHIFT_HTTP_PORT:-8080}
@@ -12,7 +14,7 @@ then
     SERVER_ARGS="$SERVER_ARGS --noreload"
 fi
 
-if [ x"$DJANGO_RUNSERVER_NO_NOTHREADING" != x"" ];
+if [ x"$DJANGO_RUNSERVER_NO_THREADING" != x"" ];
 then
     SERVER_ARGS="$SERVER_ARGS --nothreading"
 fi
