@@ -1,5 +1,20 @@
 #!/bin/sh
 
+SERVER_ARGS=""
+
 PORT=${OPENSHIFT_HTTP_PORT:-8080}
 
-exec python manage.py runserver 0.0.0.0:$PORT
+DJANGO_RUNSERVER_NO_RELOAD=${DJANGO_RUNSERVER_NO_RELOAD:-}
+DJANGO_RUNSERVER_NO_THREADING=${DJANGO_RUNSERVER_NO_THREADING:-}
+
+if [ x"$DJANGO_RUNSERVER_NO_RELOAD" != x"" ];
+then
+    SERVER_ARGS="$SERVER_ARGS --noreload"
+fi
+
+if [ x"$DJANGO_RUNSERVER_NO_NOTHREADING" != x"" ];
+then
+    SERVER_ARGS="$SERVER_ARGS --nothreading"
+fi
+
+exec python manage.py runserver $SERVER_ARGS 0.0.0.0:$PORT
