@@ -2,7 +2,5 @@
 
 This is a simple Django Hello World application.
 
-Django and uWSGI are listed in the ``requirements.txt`` file. uWSGI is used
-for serving static files.
-
-A ``.warpdrive`` directory is provided which sets the server as ``uwsgi``.
+It is a test for using ``warpdrive``, providing a shell script to start up
+the Django development server.
